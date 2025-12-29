@@ -251,10 +251,11 @@ def experiment_decomposed_scenarios(tracker: PerformanceTracker):
     print("="*70)
     
     scenarios = [
-        (4, 5000),   # 4 subproblems of 5K buses each = 20K total
-        (2, 10000),  # 2 subproblems of 10K buses each = 20K total
-        (1, 20000),  # 1 monolithic problem of 10K buses
-        (10, 2000),  # 10 subproblems of 2K buses each = 20K total
+        (4, 1000),   # 4 subproblems of 1000 buses each = 4K total
+        (2, 2000),  # 2 subproblems of 2000 buses each = 4K total
+        (1, 4000),  # 1 monolithic problem of 4K buses
+        (8, 500),  # 8 subproblems of 500 buses each = 4K total
+        (10, 400), # 10 subproblems of 400 buses each = 4K total
     ]
     
     for n_subproblems, buses_per_subproblem in scenarios:
@@ -342,7 +343,7 @@ def experiment_gpu_utilization(tracker: PerformanceTracker):
     print("EXPERIMENT 2: GPU Utilization Analysis")
     print("="*70)
     
-    bus_sizes = [5000, 10000, 15000, 20000, 25000]
+    bus_sizes = [500, 1000, 1500, 2500, 4000]
     
     for n_buses in bus_sizes:
         print(f"\nAnalyzing {n_buses} buses...")
@@ -441,10 +442,10 @@ def experiment_communication_overhead(tracker: PerformanceTracker):
     }
     
     scenarios = [
-        (2, 10000),  # 2 regions, 10K buses each
-        (4, 5000),   # 4 regions, 5K buses each
-        (8, 2500),   # 8 regions, 2.5K buses each
-        (4, 10000),  # 4 regions, 10K buses each (larger system)
+        (2, 1000),  # 2 regions, 1K buses each
+        (4, 500),   # 4 regions, 500 buses each
+        (8, 250),   # 8 regions, 250 buses each
+        (4, 1000),  # 4 regions, 1K buses each (larger system)
     ]
     
     for n_regions, buses_per_region in scenarios:
